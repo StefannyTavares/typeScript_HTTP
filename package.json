@@ -1,0 +1,22 @@
+{
+  "name": "typescript_pratica_http",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/StefannyTavares/typeScript_http.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/StefannyTavares/typeScript_http/issues"
+  },
+  "homepage": "https://github.com/StefannyTavares/typeScript_http#readme",
+  "devDependencies": {
+    "typescript": "^2.6.2"
+  }
+}
