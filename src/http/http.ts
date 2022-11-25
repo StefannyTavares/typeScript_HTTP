@@ -40,12 +40,6 @@ export default class Http {
                     }
                 }
             }
-            /*if (this.readyState == 4 && this.status == 200) {
-                resolve(this.responseText); //tiver sucesso
-                //
-            }*/
-
-            //reject(this.responseText)
         };
     }
 }
