@@ -1,6 +1,5 @@
 import Http from "./http";
 import Response from "./response";
-import PostTable from "../components/post-table";
 
 interface Callable {
     (posts: Array<any>)
