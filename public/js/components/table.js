@@ -1,33 +1,43 @@
 define(["require", "exports"], function (require, exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
-    class Table {
-        constructor(selector, data, columns) {
+    var Table = /** @class */ (function () {
+        function Table(selector, columns, _data) {
             this.selector = selector;
-            this.data = data;
             this.columns = columns;
+            this._data = _data;
         }
-        createRows() {
-            for (let row of this.data) {
-                const tr = document.createElement('tr');
-                for (let column of this.columns) {
+        Table.prototype.createRows = function () {
+            for (var _i = 0, _a = this._data; _i < _a.length; _i++) {
+                var row = _a[_i];
+                var tr = document.createElement('tr');
+                for (var _b = 0, _c = this.columns; _b < _c.length; _b++) {
+                    var column = _c[_b];
                     this.createColumn(tr, row[column]);
                     this.getElement().appendChild(tr);
                 }
             }
-        }
-        createColumn(trRow, columnData) {
-            let td = document.createElement('td');
+        };
+        Table.prototype.createColumn = function (trRow, columnData) {
+            var td = document.createElement('td');
             td.innerHTML = columnData;
             trRow.appendChild(td);
-        }
-        getElement() {
+        };
+        Table.prototype.getElement = function () {
             return document.querySelector(this.selector);
-        }
-        make() {
+        };
+        Table.prototype.make = function () {
             this.createRows();
-        }
-    }
+        };
+        Object.defineProperty(Table.prototype, "data", {
+            set: function (value) {
+                this._data = value;
+            },
+            enumerable: true,
+            configurable: true
+        });
+        return Table;
+    }());
     exports.default = Table;
 });
 //# sourceMappingURL=table.js.map

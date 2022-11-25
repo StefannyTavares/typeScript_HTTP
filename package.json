@@ -1,26 +1,18 @@
 {
-  "name": "typescript_pratica_http",
+  "name": "typescript-na-pratica-http",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
     "tsc": "./node_modules/.bin/tsc -w",
     "server": "./node_modules/.bin/live-server ./public",
-    "dev": "./node_modules/.bin/concurrently \"npm run tsc \" \" npm run server\""
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/StefannyTavares/typeScript_http.git"
+    "dev": "./node_modules/.bin/concurrently \"npm run tsc\" \"npm run server\""
   },
   "author": "",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/StefannyTavares/typeScript_http/issues"
-  },
-  "homepage": "https://github.com/StefannyTavares/typeScript_http#readme",
   "devDependencies": {
-    "@types/es6-promise": "^3.3.0",
-    "concurrently": "^7.6.0",
+    "@types/es6-promise": "0.0.33",
+    "concurrently": "^3.5.1",
     "live-server": "^1.1.0",
     "typescript": "^2.6.2"
   }

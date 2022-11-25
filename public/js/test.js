@@ -1,7 +1,19 @@
-define(["require", "exports", "./http/post-http", "module1"], function (require, exports, post_http_1) {
+define(["require", "exports", "module1"], function (require, exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
-    new post_http_1.PostHttp().query();
-    console.log('test');
 });
+/*function meuMetodo(posts){
+
+}
+
+function getPosts(responseText){
+    console.log(responseText);
+    meuMetodo(posts);
+}
+
+function error(responseText){
+    //faço algo
+}
+new PostHttp().query();
+console.log('test1111');*/ 
 //# sourceMappingURL=test.js.map

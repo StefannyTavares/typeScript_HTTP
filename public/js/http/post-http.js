@@ -1,18 +1,25 @@
-define(["require", "exports", "./http", "../components/post-table"], function (require, exports, http_1, post_table_1) {
+define(["require", "exports", "./http"], function (require, exports, http_1) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
-    class PostHttp {
-        constructor() {
-            this.http = new http_1.Http();
+    var PostHttp = /** @class */ (function () {
+        function PostHttp() {
+            this.url = 'https://jsonplaceholder.typicode.com/posts1';
+            this.http = new http_1.default();
         }
-        query() {
-            this.http.get('https://jsonplaceholder.typicode.com/posts')
+        PostHttp.prototype.query = function () {
+            return this.http.get(this.url)
                 .then(function (response) {
-                //console.log(JSON.parse(response.body));
-                new post_table_1.default('#my-table>tbody', JSON.parse(response.body), ['title', 'body']).make();
+                return JSON.parse(response.body);
             });
-        }
-    }
-    exports.PostHttp = PostHttp;
+        };
+        PostHttp.prototype.save = function (data) {
+            return this.http.post(this.url, data)
+                .then(function (response) {
+                return JSON.parse(response.body);
+            });
+        };
+        return PostHttp;
+    }());
+    exports.default = PostHttp;
 });
 //# sourceMappingURL=post-http.js.map

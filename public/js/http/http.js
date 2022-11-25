@@ -6,35 +6,52 @@ define(["require", "exports", "./response"], function (require, exports, respons
         HttpVerbs["GET"] = "GET";
         HttpVerbs["POST"] = "POST";
     })(HttpVerbs || (HttpVerbs = {}));
-    class Http {
-        get(url) {
-            let xhttp = this.createXhttp(HttpVerbs.GET, url);
-            return new Promise((resolve, reject) => {
-                let xhttp = this.createXhttp(HttpVerbs.GET, url);
-                this.configureCallbacks(xhttp, resolve, reject);
+    var Http = /** @class */ (function () {
+        function Http() {
+        }
+        Http.prototype.get = function (url) {
+            var _this = this;
+            return new Promise(function (resolve, reject) {
+                var xhttp = _this.createXhttp(HttpVerbs.GET, url);
+                _this.configureCallbacks(xhttp, resolve, reject);
                 xhttp.send();
             });
-        }
-        createXhttp(verb, url) {
-            let xhttp = new XMLHttpRequest();
+        };
+        Http.prototype.post = function (url, data) {
+            var _this = this;
+            return new Promise(function (resolve, reject) {
+                var xhttp = _this.createXhttp(HttpVerbs.POST, url);
+                _this.configureCallbacks(xhttp, resolve, reject);
+                xhttp.send(JSON.stringify(data));
+            });
+        };
+        Http.prototype.createXhttp = function (verb, url) {
+            var xhttp = new XMLHttpRequest();
             xhttp.open(verb, url, true);
             return xhttp;
-        }
-        configureCallbacks(xhttp, resolve, reject) {
+        };
+        Http.prototype.configureCallbacks = function (xhttp, resolve, reject) {
             xhttp.onreadystatechange = function () {
                 if (this.readyState == 4) {
-                    const response = new response_1.default(this.responseText, this.status);
-                    if (this.status == 200) {
+                    var response = new response_1.default(this.responseText, this.status);
+                    if (this.status.toString().startsWith('20')) {
                         resolve(response);
                     }
+                    else {
+                        if (this.status.toString().startsWith('40') || this.status.toString().startsWith('50')) {
+                            reject(response);
+                        }
+                    }
                 }
-                if (this.readyState == 4 && this.status == 200) {
-                    resolve(this.responseText);
-                }
+                /*if (this.readyState == 4 && this.status == 200) {
+                    resolve(this.responseText); //tiver sucesso
+                    //
+                }*/
                 //reject(this.responseText)
             };
-        }
-    }
-    exports.Http = Http;
+        };
+        return Http;
+    }());
+    exports.default = Http;
 });
 //# sourceMappingURL=http.js.map
