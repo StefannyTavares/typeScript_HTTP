@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "tsc": "./node_modules/.bin/tsc -w",
+    "server": "./node_modules/.bin/live-server ./public",
+    "dev": "./node_modules/.bin/concurrently \"npm run tsc \" \" npm run server\""
   },
   "repository": {
     "type": "git",
@@ -17,6 +19,9 @@
   },
   "homepage": "https://github.com/StefannyTavares/typeScript_http#readme",
   "devDependencies": {
+    "@types/es6-promise": "^3.3.0",
+    "concurrently": "^7.6.0",
+    "live-server": "^1.1.0",
     "typescript": "^2.6.2"
   }
 }
