@@ -7,8 +7,8 @@ define(["require", "exports", "./http"], function (require, exports, http_1) {
         }
         query() {
             this.http.get('https://jsonplaceholder.typicode.com/posts')
-                .then(function (responseText) {
-                console.log(JSON.parse(responseText));
+                .then(function (response) {
+                console.log(JSON.parse(response.body));
             });
         }
     }

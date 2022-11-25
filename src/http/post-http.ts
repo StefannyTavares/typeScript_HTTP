@@ -1,5 +1,5 @@
 import {Http} from './http';
-
+import Response from './response';
 export class PostHttp{
      
     private http: Http;
@@ -9,8 +9,8 @@ export class PostHttp{
 
     query() {
         this.http.get('https://jsonplaceholder.typicode.com/posts')
-        .then(function(responseText){
-            console.log(JSON.parse(responseText));
+        .then(function(response: Response){
+            console.log(JSON.parse(response.body));
         })
     }
 }
